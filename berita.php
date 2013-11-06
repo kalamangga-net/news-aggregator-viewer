@@ -1,0 +1,37 @@
+<?php
+
+$p = 20;
+if($_GET['page']) {
+ $x = (strval($_GET['page']) - 1);
+ $hal = ($p * $x).", ".$p; 
+} else {
+ $hal = "0, ".$p;
+};
+
+$query = "SELECT id,judul,ringkasan,tanggal FROM link ORDER BY id DESC LIMIT ".$hal;
+foreach ($db->iterate($query) as $row) {
+	$text = preg_replace("/<img[^>]+\>/i", "", $row->ringkasan);
+	$text = preg_replace("/<div[^>]+\>/i", "", $text);
+        $text = preg_replace("/<table[^>]+\>/i", "", $text);
+        $text = preg_replace("/<tr>/i", "", $text);
+        $text = preg_replace("/<td[^>]+\>/i", "", $text);
+        $text = preg_replace("/<\/tr>/i", "", $text);
+        $text = preg_replace("/<\/td>/i", "", $text);
+//        $text = preg_replace("/<\/a>/i", "Link</a>", $text);
+        $text = preg_replace("/<\/table>/i", "", $text);
+        $text = preg_replace("/<\/div>/i", "", $text);
+  
+  	$text = preg_replace("(http://)", "http://adf.ly/238753/banner/", $text);
+	$link = str_replace(' ', '-', $row->judul);
+	$link = str_replace(',', '', $link);
+	$link = str_replace('&', '', $link);
+	$link = str_replace('.', '', $link);
+	$link = str_replace('?', '', $link);
+	$link = str_replace(':', '', $link);
+	$link = str_replace('!', '', $link);
+	$link = str_replace('--', '-', $link);
+	$link = strtolower($link);
+	$news .= "<p><a href='/news/".$row->id."/".$link."'>".$row->judul."</a><br />".$row->tanggal." - ".$text."</p>\n";
+}
+
+?>
