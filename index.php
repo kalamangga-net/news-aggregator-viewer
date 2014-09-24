@@ -26,10 +26,10 @@ for($i=1;$i<=20;$i++) { $pages .= "| <a href=\"/page/".$i."\">".$i."</a> |"; };
 <div id="aplikasi"> 
  <div id="left">
   <div id="menu"> 
-    <?php echo("<ul>".$menus."</ul>"); ?> 
+    <?php echo("<ul>\n".$menus."\t</ul>"); ?> 
   </div>
   <div id="link"> 
-    <?php echo("<ul>".$links."</ul>"); ?> 
+    <?php echo("<ul>\n".$links."\t</ul>"); ?> 
   </div>
  </div>
  <div id="content"> 
