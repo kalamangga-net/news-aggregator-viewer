@@ -39,18 +39,5 @@ for($i=1;$i<=20;$i++) { $pages .= "| <a href=\"/page/".$i."\">".$i."</a> |"; };
 </div> 
 <div id="footer">Kalamangga.Com - News Portal, News Agregator<br />Hak Cipta © 2011 - 2012</div>    
 
-<!-- Piwik --> 
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.kalamangga.net/" : "http://piwik.kalamangga.net/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://piwik.kalamangga.net/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tracking Code -->
-
 </body>
 </html>
