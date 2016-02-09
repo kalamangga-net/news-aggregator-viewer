@@ -37,7 +37,7 @@ for($i=1;$i<=20;$i++) { $pages .= "| <a href=\"/page/".$i."\">".$i."</a> |"; };
   <?php echo("<p>".$pages."</p>"); ?> 
  </div> 
 </div> 
-<div id="footer">Kalamangga.Com - News Portal, News Agregator<br />Hak Cipta © 2011 - 2012</div>    
+<div id="footer">Kalamangga.Com - News Portal, News Agregator<br />Hak Cipta © 2011 - 2016</div>    
 
 </body>
 </html>
