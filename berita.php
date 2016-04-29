@@ -31,7 +31,7 @@ foreach ($db->iterate($query) as $row) {
 	$link = str_replace('!', '', $link);
 	$link = str_replace('--', '-', $link);
 	$link = strtolower($link);
-	$news .= "<p><a href='/news/".$row->id."/".$link."'>".$row->judul."</a><br />".$row->tanggal." - ".$text."</p>\n";
+	$news .= "<p>".$row->tanggal."<a href='/news/".$row->id."/".$link."'>".$row->judul."</a></p>\n";
 }
 
 ?>
