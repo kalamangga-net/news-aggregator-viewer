@@ -34,10 +34,10 @@ include("menu.php");
 <div id="header">Kalamangga.Com - News Portal, News Agregator</div>
 <div id="aplikasi">
   <div id="menu">
-    <?php echo("<ul>".$menus."</ul>"); ?>
+    <?php echo("<ul>\n".$menus."</ul>\n"); ?>
   </div>
   <div id="link">
-    <?php echo("<ul>\n".$links."\t</ul>"); ?>
+    <?php echo("<ul>\n".$links."</ul>\n"); ?>
   </div>
  </div>
  <div id="content">
