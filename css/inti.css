@@ -1,7 +1,7 @@
 body{
 	font-family: Tahoma;
 	text-align: center; 
-	width: 100%;
+	width: 97%;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -178,5 +178,6 @@ input,textarea,select{
 	background-image: url(../images/loading.jpg);
 }
 #alert {
-	color: FF7700;}
+	color: FF7700;
+}
 
