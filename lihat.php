@@ -50,5 +50,13 @@ include("menu.php");
 
 <div id="footer">Kalamangga.Com - News Portal, News Agregator<br />Hak Cipta © 2011 - 2012</div>
 
+<!-- adf.ly popup start -->
+<script type="text/javascript">
+    var adfly_id = 238753;
+    var popunder_frequency_delay = 0;
+</script>
+<script src="http://cdn.adf.ly/js/display.js"></script>
+<!-- adf.ly popup end -->
+
 </body>
 </html>
