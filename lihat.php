@@ -36,10 +36,14 @@ include("menu.php");
   <div id="menu">
     <?php echo("<ul>".$menus."</ul>"); ?>
   </div>
-  <div id="content">
-        <?php echo("<h2>".$judul."</h2>"); ?>
-        <?php echo("<p>".$text." <a href='".$link."'>... [more] ...</a></p>"); ?>
-    </div>
+  <div id="link">
+    <?php echo("<ul>\n".$links."\t</ul>"); ?>
+  </div>
+ </div>
+ <div id="content">
+  <?php echo("<h2>".$judul."</h2>"); ?>
+  <?php echo("<p>".$text." <a href='".$link."'>... [more] ...</a></p>"); ?>
+ </div>
 </div>
 
 <g:plusone size="small"></g:plusone>
