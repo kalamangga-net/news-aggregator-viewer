@@ -8,7 +8,7 @@ if($_GET['page']) {
  $hal = "0, ".$p;
 };
 
-$query = "SELECT l.id, l.judul, l.tanggal, x.nama, x.url FROM link l LEFT JOIN xml x ON x.id=l.id_sindikasi ORDER BY id DESC LIMIT ".$hal;
+$query = "SELECT l.id, l.judul, l.tanggal, x.nama, x.link FROM link l LEFT JOIN xml x ON x.id=l.id_sindikasi ORDER BY id DESC LIMIT ".$hal;
 foreach ($db->iterate($query) as $row) {
 /*
 	$text = preg_replace("/<img[^>]+\>/i", "", $row->ringkasan);
@@ -31,7 +31,7 @@ foreach ($db->iterate($query) as $row) {
 	$link = str_replace('!', '', $link);
 	$link = str_replace('--', '-', $link);
 	$link = strtolower($link);
-	$news .= "<p>".$row->tanggal." - <a href='".$row->url."'>".$row->nama."</a>, <a href='/news/".$row->id."/".$link."'>".$row->judul."</a></p>\n";
+	$news .= "<p>".$row->tanggal." - <a href='".$row->link."'>".$row->nama."</a>, <a href='/news/".$row->id."/".$link."'>".$row->judul."</a></p>\n";
 }
 
 ?>
