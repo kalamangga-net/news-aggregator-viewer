@@ -94,9 +94,9 @@ class MySqlDatabase
     public function connect($host, $user, $password, $database=false, $persistant=false)
     {
         if ($persistant) {
-            $this->link = @mysql_pconnect($host, $user, $password);
+            $this->link = @mysqli_pconnect($host, $user, $password);
         } else {
-            $this->link = @mysql_connect($host, $user, $password);
+            $this->link = @mysqli_connect($host, $user, $password);
         }
         
         if (!$this->link) 
@@ -372,7 +372,7 @@ class MySqlDatabase
                 
                 if (!$result && $abort_on_error) {
                     $file = basename($filename);
-                    $error = mysql_error($this->link);
+                    $error = mysqli_error($this->link);
                     throw new Exception("Error in $file on line $sql_line: $error");
                 }
                 
@@ -398,7 +398,7 @@ class MySqlDatabase
     public function isConnected()
     {
         if (!empty($this->link)) {
-            return @mysql_ping($this->link);
+            return @mysqli_ping($this->link);
         } else {
             return false;
         }
@@ -433,9 +433,9 @@ class MySqlDatabase
         $r = $this->query($query);
         
         if ($r_type == MySqlDatabase::INSERT_GET_AFFECTED_ROWS) {
-            return @mysql_affected_rows($this->link);
+            return @mysqli_affected_rows($this->link);
         } else {
-            return @mysql_insert_id($this->link);
+            return @mysqli_insert_id($this->link);
         }
     }
     
@@ -456,7 +456,7 @@ class MySqlDatabase
             throw new Exception('The $table parameter must be specified as a string.');
         }
         
-        $table_sql = '`' . @mysql_real_escape_string($table) . '`';
+        $table_sql = '`' . @mysqli_real_escape_string($table) . '`';
         $query = "INSERT INTO $table_sql ";
         
         // columns
@@ -469,7 +469,7 @@ class MySqlDatabase
                 if (!is_string($col)) {
                     throw new Exception('The $columns parameter must be a string or an array of strings');
                 }
-                $col = @mysql_real_escape_string($col);
+                $col = @mysqli_real_escape_string($col);
             }
             $column_sql = implode(',', $columns);
             $column_count = count($columns);
@@ -574,7 +574,7 @@ class MySqlDatabase
 
     public function query($query) 
     {
-        $r = @mysql_query($query, $this->link);
+        $r = @mysqli_query($query, $this->link);
 
         if (!$r) {
             throw new Exception("Query Error: " . mysql_error());
@@ -597,7 +597,7 @@ class MySqlDatabase
      */
     public function quickQuery($query)
     {
-        $r = @mysql_query($query, $this->link);
+        $r = @mysqli_query($query, $this->link);
         
         if (!$r) return false;
         if (is_resource($r)) mysql_free_result($r);
@@ -627,7 +627,7 @@ class MySqlDatabase
     private function updateOrDelete($query)
     {
         $r = $this->query($query);
-        return @mysql_affected_rows($this->link);
+        return @mysqli_affected_rows($this->link);
     }
     
     /**
@@ -641,7 +641,7 @@ class MySqlDatabase
      */
     public function useDatabase($database) 
     {
-        if (!@mysql_select_db($database, $this->link))
+        if (!@mysqli_select_db($database, $this->link))
         {
             throw new Exception('Unable to select database: ' . mysql_error($this->link));
         }

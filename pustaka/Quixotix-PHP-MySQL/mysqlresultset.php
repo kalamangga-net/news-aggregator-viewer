@@ -94,11 +94,11 @@ class MySqlResultSet implements Iterator
     public function __construct($query, $data_type=MySqlResultSet::DATA_OBJECT, 
                                 $link=false) 
     {
-        if ($link) $this->result = @mysql_query($query, $link);
-        else $this->result = @mysql_query($query);
+        if ($link) $this->result = @mysqli_query($query, $link);
+        else $this->result = @mysqli_query($query);
 
         if (!$this->result) {
-            throw new Exception(mysql_error());
+            throw new Exception(mysqli_error());
         }
         
         if (!is_resource($this->result) 
@@ -107,7 +107,7 @@ class MySqlResultSet implements Iterator
         }
         
         $this->query = $query;
-        $this->num_rows = mysql_num_rows($this->result);
+        $this->num_rows = mysqli_num_rows($this->result);
         $this->type = $data_type;
     }
     
@@ -120,7 +120,7 @@ class MySqlResultSet implements Iterator
     {
         if (is_resource($this->result) 
             && get_resource_type($this->result) == 'mysql result') {
-            mysql_free_result($this->result);   
+            mysqli_free_result($this->result);   
         }
     }
     
@@ -165,7 +165,7 @@ class MySqlResultSet implements Iterator
     public function rewind() 
     {
         if ($this->num_rows > 0) {
-            mysql_data_seek($this->result, 0);
+            mysqli_data_seek($this->result, 0);
             $this->index = -1;  // fetch() will increment to 0
             $this->fetch();
         }
